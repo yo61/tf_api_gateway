@@ -52,8 +52,8 @@ def cli():
 @cli.command()
 @click.option('--tf_template', help='Terraform template containing the variables')
 @click.option('--workspace', help='Name of the terraform Workspace for this project')
-@click.option('--tf_key', default=os.environ['ATLAS_TOKEN'], help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
-@click.option('--organization', default=os.environ['ATLAS_USERNAME'], help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
+@click.option('--tf_key', default=os.environ.get('ATLAS_TOKEN'), help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
+@click.option('--organization', default=os.environ.get('ATLAS_USERNAME'), help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
 def compare(tf_template, workspace, tf_key, organization):
     """Compares variables between Terraform and TF File and outputs the findings"""
     templateData = load_terraform(tf_template)
@@ -106,8 +106,8 @@ def compare(tf_template, workspace, tf_key, organization):
 @cli.command()
 @click.option('--tf_template', help='Terraform template containing the variables')
 @click.option('--workspace', help='Name of the terraform Workspace for this project')
-@click.option('--tf_key', default=os.environ['ATLAS_TOKEN'], help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
-@click.option('--organization', default=os.environ['ATLAS_USERNAME'], help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
+@click.option('--tf_key', default=os.environ.get('ATLAS_TOKEN'), help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
+@click.option('--organization', default=os.environ.get('ATLAS_USERNAME'), help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
 def addNew(tf_template, workspace, tf_key, organization):
     """Adds all new variables from the TF file to Terraform
     
@@ -167,8 +167,8 @@ def addNew(tf_template, workspace, tf_key, organization):
 @cli.command()
 @click.option('--tf_template', help='Terraform template containing the variables')
 @click.option('--workspace', help='Name of the terraform Workspace for this project')
-@click.option('--tf_key', default=os.environ['ATLAS_TOKEN'], help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
-@click.option('--organization', default=os.environ['ATLAS_USERNAME'], help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
+@click.option('--tf_key', default=os.environ.get('ATLAS_TOKEN'), help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
+@click.option('--organization', default=os.environ.get('ATLAS_USERNAME'), help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
 def removeMissing(tf_template, workspace, tf_key, organization):
     """Removes variables from Terraform that are no longer in TF file"""
 
@@ -196,8 +196,8 @@ def removeMissing(tf_template, workspace, tf_key, organization):
 @cli.command()
 @click.option('--tf_template', help='Terraform template containing the variables')
 @click.option('--workspace', help='Name of the terraform Workspace for this project')
-@click.option('--tf_key', default=os.environ['ATLAS_TOKEN'], help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
-@click.option('--organization', default=os.environ['ATLAS_USERNAME'], help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
+@click.option('--tf_key', default=os.environ.get('ATLAS_TOKEN'), help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
+@click.option('--organization', default=os.environ.get('ATLAS_USERNAME'), help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
 def updateValues(tf_template, workspace, tf_key, organization):
     """Updates variables in Terraform with the values in the TF file"""
     templateData = load_terraform(tf_template)
@@ -227,8 +227,8 @@ def updateValues(tf_template, workspace, tf_key, organization):
 @cli.command()
 @click.option('--tf_template', default='', help='Terraform template containing the workspace to check')
 @click.option('--workspace', default='', help='Name of the terraform Workspace to check')
-@click.option('--tf_key', default=os.environ['ATLAS_TOKEN'], help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
-@click.option('--organization', default=os.environ['ATLAS_USERNAME'], help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
+@click.option('--tf_key', default=os.environ.get('ATLAS_TOKEN'), help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
+@click.option('--organization', default=os.environ.get('ATLAS_USERNAME'), help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
 def checkWorkspace(tf_template, workspace, tf_key, organization):
     """Checks to see if Workspace exists
     
@@ -269,8 +269,8 @@ def checkWorkspace(tf_template, workspace, tf_key, organization):
 @cli.command()
 @click.option('--tf_template', help='Terraform template containing the workspace to add')
 @click.option('--workspace', help='Name of the terraform Workspace to add')
-@click.option('--tf_key', default=os.environ['ATLAS_TOKEN'], help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
-@click.option('--organization', default=os.environ['ATLAS_USERNAME'], help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
+@click.option('--tf_key', default=os.environ.get('ATLAS_TOKEN'), help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
+@click.option('--organization', default=os.environ.get('ATLAS_USERNAME'), help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
 @click.option('--git_repo', default='', help='Name of the git repo for this project (e.g. groupname/projectname)')
 def addWorkspace(tf_template, workspace, tf_key, organization, git_repo):
     """Adds a workspace to Terraform
@@ -309,8 +309,8 @@ def addWorkspace(tf_template, workspace, tf_key, organization, git_repo):
     
 
 @cli.command()
-@click.option('--tf_key', default=os.environ['ATLAS_TOKEN'], help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
-@click.option('--organization', default=os.environ['ATLAS_USERNAME'], help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
+@click.option('--tf_key', default=os.environ.get('ATLAS_TOKEN'), help='Access Token for Terraform (Uses ATLAS_TOKEN environment var if not provided)')
+@click.option('--organization', default=os.environ.get('ATLAS_USERNAME'), help='Terraform Organization name (Uses ATLAS_USERNAME environment var if not provided)')
 def listWorkspaces(tf_key, organization):
     """Lists all workspaces for a specific account
     
